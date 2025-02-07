@@ -39,4 +39,34 @@ const Student = (name, age, country, school, major) => {
 const studentOne = Student('Jimin', 24, 'Korea', 'Hanyang University', 'Computer Science');
 studentOne.printMajor();
 
-// 01-2. 클래스 문
+// 01-2. 클래스 문법 (deprecated)
+class PersonClass {
+    constructor(name, age, country){
+        this.name = name;
+        this.age = age;
+        this.country = country;
+    }
+    greet(){
+        console.log(`Hello, I am ${this.name} from ${this.country}`)
+    }
+}
+const hyunsoo = new PersonClass('hyunsoo', 24, 'Korea');
+hyunsoo.greet();
+
+class StudentClass extends PersonClass {
+    constructor(name, age, country, school, major){
+        super(name, age, country);
+        this.school = school;
+        this.major = major;
+    }
+    printMajor(){
+        console.log(`${this.name} is studying ${this.major} at ${this.school}`)
+    }
+}
+const studentTwo = new StudentClass('hyunsoo', 24, 'Korea', 'Yonsei University', 'Computer Science');
+studentTwo.printMajor();
+
+// 02. DOM (Document Object Model)
+// 구체적으로까지 실습할 건 없는 것 같고, getElementById, getElementByClassName, getElementByTagName 등의 메서드 사용 방법만 알아두면 될 듯
+
+// 03. 이벤트 핸들링
