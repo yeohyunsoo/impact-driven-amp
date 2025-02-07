@@ -203,7 +203,124 @@ async function fecthUserDataPromsie(urls){
 const userUrlArray = ['https://api.example.com/user1', 'https://api.example.com/user2', 'https://api.example.com/user3'];
 fecthUserDataPromsie(userUrlArray);
 
-// [04. if, else, switch / try, catch, finally]
+// [04. loops]
 
-// [05. export, import]
-// 아마도 export가 조금 더 복잡할듯 default가 어쩌구.. 등!
+// Hands On 1. for loop
+let sum = 0;
+for (let i = 0; i <10; i++){
+  sum += i;
+  console.log(`${i+1}번째 더하기 진행중 현재 합계는 ${sum}입니다.`)
+}
+
+// Hands On 2. while loop
+// 조건이 참일 동안 반복 실행 <-> 거짓이면 실행 종료
+let whileVar = 0;
+while (whileVar < 10){
+  whileVar ++;
+  console.log('*'.repeat(whileVar));
+}
+
+// Hands On 3. do-while loop
+// 그냥 while하면 되지 왜 do함..? -> 조건과 상관 없이 일단 한 번은 사용해야 할 때
+let doWhileVar = 0;
+do{
+  doWhileVar++;
+  console.log('(^-v^;)'.repeat(doWhileVar));
+} while(doWhileVar < 10);
+
+// Hands On 4.1. [객체를 순회하는 반복문] for-in loop
+const forInObj = { a:1, b:2, c:3 };
+for (const key in forInObj){
+  console.log(`${key}에 해당하는 value는 ${forInObj[key]}입니다.`);
+}
+
+// Hands On 4.2. [배열을 순회하는 반복문] for-of loop
+const forOfArr = [1,2,3,4,5];
+let forOfVar = 0;
+for (const value of forOfArr){
+  console.log(`${forOfVar+1}번째 요소는 ${value}입니다.`);
+  forOfVar++;
+}
+
+// Hands On 6. [중간에 중단이 불가한 반복문] forEach loop
+const forEachArray = [10, 20, 30];
+forEachArray.forEach((value) => {
+  console.log(value); 
+});
+
+// Hands On 7. map loop
+const mapArray = [1,2,3,4,5];
+const doubleMapArray = mapArray.map((i) => {
+  console.log(`${i}번째 map loop를 실행중입니다..`);
+  return i*2;
+})
+console.log('mapArray: ', mapArray, " _ [원본은 안 바뀜]");
+console.log('doubleMapArray: ', doubleMapArray);
+
+// [05. conditionals]
+
+// Hands On 1. if, else, else if >> 이건 이미 알 것 같으니..! SKIP!
+
+// Hands On 2. switch
+// switch는 '==='를 사용해 값을 비교함
+// if-else에 비해 높은 가독성 <-> 조건이 복잡하거나 범위 비교가 필요하면 if-else 사용해야 함!
+const month = 2;
+
+let days;
+switch (month) {
+  case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+    days = 31;
+    break;
+  case 4: case 6: case 9: case 11:
+    days = 30;
+    break;
+  case 2:
+    days = 28;
+    break;
+  default:
+    console.log("Invalid month");
+}
+
+console.log(`${month}월은 ${days}일입니다.`);
+
+// Hands On 3. ternary operator
+//condition ? resultIfTrue : resultIfFalse;
+
+// const isEven = (num) => num % 2 === 0 ? '짝수' : '홀수'; // 함수형 프로그래밍으로 작성하면 이렇게!
+
+function isEven(num){
+  console.log('우다다다다')
+  return num % 2 === 0 ? '짝수' : '홀수';
+}
+console.log(isEven(2));
+
+
+// [06. etc]
+
+// Hands On 1. export, import
+
+// Hands On 2. optional chaining (?.)
+// 보통 obj.property 이렇게 접근하는데, 만약 그 안에 값이 없다면? -> 에러 발생
+// 이를 예방하기 위해 사용하는게 optional chaining
+const optionalChainObj = {
+  name: 'Alice',
+  address: {
+    city: 'New York',
+  },
+};
+
+console.log('없는 값 출력해도 에러 발생 X', optionalChainObj?.address.hello); // undefined 반환됨 -> 이렇게 하면 에러는 발생 안 함
+
+// Hands On 3. nullish coalescing (??)
+// undefined 또는 null인 경우에만 대체 값을 사용하는 연산자
+// 보통 기본값을 설정할 때 사용
+
+const user = {
+  profile: {
+    name: null,
+    age: 25,
+  },
+};
+
+const userName = user.profile?.name ?? "Unknown";
+console.log(userName); // 출력: Unknown
