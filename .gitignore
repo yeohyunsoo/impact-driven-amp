@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 #test
-test.js
+/Users/okestro/Development/vcncy-amp/src/test.js
