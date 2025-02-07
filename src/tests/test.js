@@ -36,7 +36,7 @@ const userNames2 = [...userNames];
 userNames2.push('Diana');
 console.log('userNames2', userNames2);
 
-// [03. function] As we can see below, so much usage of function is possible.
+// [03. function] As we can see below, so much usage of function is possible. (여기서 대부분의 개념 다 다룰거임)
 
 // Hands On 1. basic function
 function printHello() {
@@ -139,6 +139,8 @@ displayUserInfo({ name: 'Bob', age: 30 });
 // 2. 자바스크립트는 싱글스레드 언어이지만, 시간이 오래 걸리는 작업은 이후 작업이 먼저 실행되게 함으로써 병렬처럼 보이게 할 수 있음 (멈추지 않고 계속 진행)
 // 3. BUT 때로는 비동기 작업이 완료된 후에만 다음 작업을 실행해야 할 때가 있음 (i.e, 데이터 가져온 다음에 그 데이터 기반으로 다음 작업 실행한다던가)
 // 4**. 비동기 함수의 역할은 비동기 작업이 완료될 때까지 코드 실행을 일시 중지 하도록 도와주는 것.
+// cf) 고로 대표적인 비동기 작업의 예시에 대해 잘 이해하고 있는게 아주 중요함 > API 호출, 파일 읽기/쓰기, 타이머, DB쿼리, 이벤트 리스너, Web Workers, Promise 기반 라이브러리가 대표적인 (src: gpt-4o)
+
 
 // [AS-WAS] 옛날옛적에는 fecth와 .then() / .catch() 메서드를 사용해 비동기 작업을 처리했음
 // 1. 비동기 작업을 처리하는 함수를 만들고, 그 함수를 .then() 메서드에 전달
@@ -184,9 +186,24 @@ async function fectchUserDataAsync(){
 fectchUserDataAsync();
 
 // Hands On 11. function with promise
+console.log('Hands On 11. function with promise');
+// Promise는 비동기 작업을 효율적으로 처리하기 위해 사용됨 >> 비동기 작업의 성공 또는 실패를 효율적으로 관리
+// 내부적으로 Promise를 사용하지만, 이를 문법적으로 더 간결하게 작성할 수 있게 한 녀석이 async-await
+// Promise를 사용하면 여러 비동기 작업을 병렬적으로 처리할 수 있음
+async function fecthUserDataPromsie(urls){
+  try{
+  const responses = await Promise.all(urls.map(i => fetch(i)));
+  const data  = await Promise.all(responses.map((res) => res.json()));
+  return data;
+  } catch(error){
+  console.error('에러 발생:', error);
+  }
+}
 
-
-
-// Hands On 12. function with callback
+const userUrlArray = ['https://api.example.com/user1', 'https://api.example.com/user2', 'https://api.example.com/user3'];
+fecthUserDataPromsie(userUrlArray);
 
 // [04. if, else, switch / try, catch, finally]
+
+// [05. export, import]
+// 아마도 export가 조금 더 복잡할듯 default가 어쩌구.. 등!
