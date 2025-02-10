@@ -69,4 +69,4 @@ studentTwo.printMajor();
 // 02. DOM (Document Object Model)
 // 구체적으로까지 실습할 건 없는 것 같고, getElementById, getElementByClassName, getElementByTagName 등의 메서드 사용 방법만 알아두면 될 듯
 
-// 03. 이벤트 핸들링
+// 03. 이벤트 핸들링 (이건 리액트 하면서 보는게 맞는듯 ㅇㅇ)
