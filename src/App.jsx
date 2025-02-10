@@ -3,6 +3,8 @@ import './App.css';
 import {useState} from 'react';
 import Article from './components/Article';
 import List from './components/List';
+import Profile from './components/Profile';
+
 function App() {
   let className = 'sample';
   let post = 'Hello, world!'
@@ -11,6 +13,10 @@ function App() {
   let [count, setCount] = useState(0); // 중요한 데이터는 변수 (let, const)가 아닌 state에 담는다.
   let [isModalOn, setIsModalOn] = useState(false);
   let [colorSwitch, setColorSwitch] = useState(false);
+
+  let profileArr = [{name: '지민', age: 10, organization: '연세대'}, {name: '현수', age: 20, organization: '오케스트로'}, {name: '철수', age: 75, organization: "교수"}]
+
+    
 
   /*
   - 모달 켜고 끄는 것도 useState로 관리한다.
@@ -61,6 +67,7 @@ function App() {
       <button onClick={() => setColorSwitch(!colorSwitch)} style={{color: textColor}}>{text}</button>
       <Article />
       <List />
+      <Profile />
     </div>
   );
 }
