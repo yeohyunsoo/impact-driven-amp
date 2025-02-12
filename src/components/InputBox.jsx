@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 
 export default function InputBox(){
     
-    let [inputArr, setInputArr] = useState([]); //author, title, content,
+    let [inputArr, setInputArr] = useState([]); //author, title, content
     let [likeArr, setLikeArr] = useState([]);
     //{author: "작가", title: "제목", content: "사용자가 작성한 내용"
 
@@ -26,6 +26,7 @@ export default function InputBox(){
                         const title = document.getElementById('titleInput').value;
                         const author = document.getElementById('authorInput').value;
                         const content = document.getElementById('contentInput').value;
+                        
                         setInputArr([...inputArr, {author, title, content}]);
                     }}>입력</button>
                 </span>
@@ -34,13 +35,23 @@ export default function InputBox(){
                 {
                     inputArr.map((a,i) => {
                         return(
-                            <>
-                                <h4>{a.title}</h4>
+                            <>  
+                                {console.log(a)}
+                                <h4>제목: {a.title}</h4>
                                 <span>
-                                    <p>{a.author}</p>
-                                    <p>{a.title}</p>
-                                    <p>{a.like}</p>
+                                    <p>작가: {a.author}</p>
+                                    <p>내용: {a.content}</p>
                                 </span>
+                                <button onClick={() => {
+                                    let newLikeArr = [...likeArr];
+                                    // 데이터가 없으면 0으로 초기화
+                                    if (newLikeArr[i] === undefined) {
+                                        newLikeArr[i] = 0;
+                                    }
+                                    newLikeArr[i] += 1; // 좋아요 수 증가
+                                    setLikeArr(newLikeArr);
+                                }}>LIKE!!</button>
+                                <p>Like Count: {likeArr[i]}</p>
                             </>
                         )
                     })
