@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import {useState} from 'react';
 import Article from './components/Article';
 import List from './components/List';
 import Profile from './components/Profile';
+import ParentComponent from './components/ParentComponent';
 
 function App() {
   let className = 'sample';
@@ -16,9 +16,6 @@ function App() {
   let [count, setCount] = useState(0); // 중요한 데이터는 변수 (let, const)가 아닌 state에 담는다.
   let [isModalOn, setIsModalOn] = useState(false);
   let [colorSwitch, setColorSwitch] = useState(false);
-
-  let profileArr = [{name: '지민', age: 10, organization: '연세대'}, {name: '현수', age: 20, organization: '오케스트로'}, {name: '철수', age: 75, organization: "교수"}]
-
     
 
   /*
@@ -26,14 +23,15 @@ function App() {
   step 01. 모달 상태 관리를 위한 state를 선언하고
   step 02. 어떤 버튼 누르면 그 state 값을 true 또는 false로 변경함.
   */
-  if(isModalOn === true){
-    return(
-      <div>
-        <h3> 안녕하세요 모달입니다. </h3>
-        <button onClick={() => setIsModalOn(false)}>모달창 닫기</button>
-      </div>
-    )
-  }
+  // if(isModalOn === true){
+  //   return(
+  //     <div>
+  //       <h3> 안녕하세요 모달입니다. </h3>
+  //       <button onClick={() => setIsModalOn(false)}>모달창 닫기</button>
+  //     </div>
+  //   )
+  // }
+  
 
   /*
   - 스위치도 유사한 원리로 동작한다.
@@ -70,9 +68,25 @@ function App() {
       <button onClick={() => setColorSwitch(!colorSwitch)} style={{color: textColor}}>{text}</button>
       <Article />
       <List />
-      <Profile />
+      {/* <Profile /> */}
+      <ParentComponent />
+      <br/>
+      <button style={{color: 'blue', fontSize: '20px'}} onClick={() => setIsModalOn(!isModalOn)}>모달 열기</button>
+      {
+        isModalOn === true ? <Modal /> : null
+      }
     </div>
   );
+}
+
+function Modal(){
+  return(
+    <div>
+      <h3> 안녕하세요 모달입니다. </h3>
+      <p>content goes here</p>
+      <p>explanation goes here</p>
+    </div>
+  )
 }
 
 export default App;
