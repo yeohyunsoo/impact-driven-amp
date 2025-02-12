@@ -31,11 +31,12 @@ export default function InputBox(){
                     }}>입력</button>
                 </span>
             </div>
+            {/* 글 목록 보는 Section (ft. 좋아요 버튼 기능 추가) */}
             <div className='contents-list'>
                 {
                     inputArr.map((a,i) => {
                         return(
-                            <>  
+                            <div className='content-box' key={a.title}>  
                                 {console.log(a)}
                                 <h4>제목: {a.title}</h4>
                                 <span>
@@ -51,8 +52,13 @@ export default function InputBox(){
                                     newLikeArr[i] += 1; // 좋아요 수 증가
                                     setLikeArr(newLikeArr);
                                 }}>LIKE!!</button>
+                                <button onClick={() => {
+                                    let newInputArr = [...inputArr];
+                                    newInputArr.splice(i, 1);
+                                    setInputArr(newInputArr); 
+                                }}>DELETE!!</button>
                                 <p>Like Count: {likeArr[i]}</p>
-                            </>
+                            </div>
                         )
                     })
                 }
