@@ -15,6 +15,7 @@ export default function InputBox(){
     return(
         <>
             <div className='input-box-container'>
+                <h1>Okestro Knowledge Sharing System</h1>
                 <span>
                     <span> 이름을 입력하세요: </span> 
                     <input type='text' id='authorInput'/> <br/>
