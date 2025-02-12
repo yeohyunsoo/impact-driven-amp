@@ -1,24 +1,21 @@
 import React from 'react';
 
 
-const Profile = () => {
+export default function Profile() {
 
     let profileArr = [{name: '지민', age: 10, organization: '연세대'}, {name: '현수', age: 20, organization: '오케스트로'}, {name: '철수', age: 75, organization: "교수"}]
 
-    return(
-        <>
-        {
-            profileArr.map((i)=>{
-                <div key={i.name}>
-                    <h4>{i.name}</h4>
-                    <p>{i.age}</p>
-                    <span>{i.organization}</span>
-                </div>
-            })
-        }
-        </>
+    return (
+        <div>
+            {profileArr.map((i) => {
+                return (
+                    <div key={i.name}>
+                        <p>{i.name}</p>
+                        <p>{i.age}</p>
+                        <p>{i.organization}</p>
+                    </div>
+                )
+            })}
+        </div>
     )
-
 }
-
-export default Profile;

@@ -10,6 +10,9 @@ function App() {
   let post = 'Hello, world!'
   let text;
   let textColor;
+  /*
+   * useState는 반드시 React 컴포넌트 내부에서 호출되어야 한다.
+   */
   let [count, setCount] = useState(0); // 중요한 데이터는 변수 (let, const)가 아닌 state에 담는다.
   let [isModalOn, setIsModalOn] = useState(false);
   let [colorSwitch, setColorSwitch] = useState(false);
