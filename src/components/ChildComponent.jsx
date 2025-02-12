@@ -1,5 +1,6 @@
 import React from 'react';
 
+// TODO: props 받아는 오는데, 빨간 줄 뜨는 이유 알아봐야 할듯
 const ChildComponent = (props) => {
     return(
         <div>

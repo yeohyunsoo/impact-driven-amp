@@ -11,7 +11,7 @@ p.s. props 없이도 상속하는 방법 이딴건 react하면 굳이 필요 없
 // 01. 함수형 프로그래밍 (과거의 클래스 문법과 비교)
 
 // 01-1. 함수형 프로그래밍 & 상속
-const Person = (name, age, country) => {
+const Person = (name, age, country) => { // Java의 인스턴스 생성과 유사한 개념이라고 보면 됨
 	return {
 		name,
 		age,
@@ -50,7 +50,7 @@ class PersonClass {
         console.log(`Hello, I am ${this.name} from ${this.country}`)
     }
 }
-const hyunsoo = new PersonClass('hyunsoo', 24, 'Korea');
+const hyunsoo = new PersonClass('hyunsoo', 24, 'Korea'); // 실제로 class 문법 사용했을 떄는 new, this 사용하는 것까지 java의 인스턴스 사용과 굉장히 유사함
 hyunsoo.greet();
 
 class StudentClass extends PersonClass {
