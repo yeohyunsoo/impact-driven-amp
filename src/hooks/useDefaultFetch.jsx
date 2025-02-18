@@ -25,8 +25,34 @@
 - 커스텀 훅) 1/ 여러 기본 훅을 묶어서 "커스텀" 훅을 만들 수 있음 && 2/ 코드의 재사용성, 가독성을 높일 수 있음
 */
 
-export const fetchUser = async () => {
-    const response = await fetch('https://impact-driven-amp-s3.s3.ap-northeast-2.amazonaws.com/sample.json')
-    const data = await response.json()
-    return data
+import { useState, useEffect } from 'react';
+
+const useDefaultFetch = (url) => {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(url);
+                console.log("status: ", response.status);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok: ' + response.status);
+                }
+                const jsonData = await response.json(); // JSON 데이터 파싱
+                setData(jsonData); // 전체 배열 데이터 저장
+            } catch (error) {
+                console.error('Fetch error:', error);
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchData();
+    }, [url]);
+
+    return { data, loading, error };
 }
+
+export default useDefaultFetch;
