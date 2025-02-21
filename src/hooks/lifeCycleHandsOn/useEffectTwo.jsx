@@ -1,12 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect } from 'react';
 
-export default function UseEffectTwo() {
-
-    let [nameInput, setNameInput] = useState('');
-    let [ageInput, setAgeInput] = useState('');
-
-
+export default function useEffectTwo({ name, age }) {
     useEffect(() => {
-        console.log('component has been mounted successfully')
-    }, [])
+        console.log('only happens on mount');
+    }, []);
 }

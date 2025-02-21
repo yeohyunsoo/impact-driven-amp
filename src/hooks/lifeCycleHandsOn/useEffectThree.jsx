@@ -1,11 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect } from 'react';
 
-export default function useEffectThree() {
-
-    let [nameInput, setNameInput] = useState('');
-    let [ageInput, setAgeInput] = useState('');
-
+export default function useEffectThree({ name, age }) {
     useEffect(() => {
-        console.log('specific status update happened')
-    }, [nameInput, ageInput])
+        console.log('only happens when name changes');
+    }, [name]);
 }
