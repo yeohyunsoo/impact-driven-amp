@@ -36,7 +36,7 @@ const useDefaultFetch = (url) => {
         const fetchData = async () => {
             try {
                 const response = await fetch(url);
-                console.log("status: ", response.status);
+                console.log("status: ", response.status); // CORS 등 Server-side 문제가 없는지 확인하기 위함
                 if (!response.ok) {
                     throw new Error('Network response was not ok: ' + response.status);
                 }
