@@ -4,6 +4,7 @@ import InputBox from "./components/InputBox";
 import DefaultFetchHookComponent from "./components/DefaultFetchHookComponent";
 import UseEffectTester from "./components/UseEffectTester";
 import UseEffectTesterTwo from "./components/UseEffectTesterTwo";
+import UseEffectTesterAdvance from "./components/UseEffectTesterAdvance";
 
 export default function NewApp(){ //react-심화 개념은 여기에서 다룸 ㅇㅇ
     return(
@@ -14,6 +15,7 @@ export default function NewApp(){ //react-심화 개념은 여기에서 다룸 �
                 <Route path="/default-fetch-hook" element={<DefaultFetchHookComponent/>} />
                 <Route path="/use-effect-tester" element={<UseEffectTester/>} />
                 <Route path="/use-effect-tester-two" element={<UseEffectTesterTwo/>} />
+                <Route path="/use-effect-tester-advance" element={<UseEffectTesterAdvance/>} />
             </Routes> 
         </Router>
     ) 
